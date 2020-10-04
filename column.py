@@ -10,6 +10,10 @@ def splitNewlines(line, colomnWidth):
         #time.sleep(2)
     return line
 
+def addSpaces(lines, colomnWidth):
+    return lines
+    
+
 text="per ole"
 res = splitNewlines(text, 3)
 #print(res)
@@ -33,4 +37,8 @@ assert res == "xx yy\nzz"
 text="xx yy zz"
 res = splitNewlines(text, 6)
 #print(res)
+assert res == "xx yy\nzz"
+
+text="xx yy\nzz"
+res = addSpaces(text, 5)
 assert res == "xx yy\nzz"
