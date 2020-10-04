@@ -12,10 +12,11 @@ def splitNewlines(line, colomnWidth):
 
 def addSpacesInLine(line, colomnWidth):
     index = 0    
-    while(len(line) < colomnWidth):
+    while(len(line) < colomnWidth and index >= 0):
         index = line.find(' ', index)
-        line = line[:index] + " " + line[index:]
-        index += 1
+        if(index >= 0):
+            line = line[:index] + " " + line[index:]
+            index += 1
     return line
 
 def addSpaces(lines, colomnWidth):
@@ -60,3 +61,7 @@ text="xx yy\n"
 res = addSpaces(text, 6)
 assert res == "xx  yy\n"
 
+text="xx yy\nzz\n"
+res = addSpaces(text, 5)
+#print(res)
+assert res == "xx yy\nzz\n"
