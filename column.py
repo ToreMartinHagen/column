@@ -25,8 +25,10 @@ def addSpaces(lines, colomnWidth):
     for line in splitLines:
         retLine += addSpacesInLine(line, colomnWidth) + "\n"
     return retLine
-            
-    
+
+def makeColumns(line, colomnWidth):
+    return addSpaces(splitNewlines(line, colomnWidth), colomnWidth)
+
 
 text="per ole"
 res = splitNewlines(text, 3)
@@ -65,3 +67,13 @@ text="xx yy\nzz\n"
 res = addSpaces(text, 5)
 #print(res)
 assert res == "xx yy\nzz\n"
+
+text="xx yy zz"
+res = makeColumns(text, 6)
+#print(res)
+assert res == "xx  yy\nzz\n"
+
+text="Conley also said that Chief of Staff Mark Meadows' update to reporters on Saturday was misconstrued, adding that the chief and I work side by side. The president's vitals over the last 24 hours were very concerning and the next 48 hours will be critical in terms of his care. We're still not on a clear path to a full recovery, Meadows said. The doctor confirmed that Meadows was referencing the president's high fever and oxygen drop 24 hours earlier. Trump shared a video message from hospital on Saturday evening, warning the next few days will be the real test in his fight against the killer bug."
+
+res = makeColumns(text, 30)
+print(res)
