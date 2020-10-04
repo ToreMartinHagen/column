@@ -10,11 +10,19 @@ def splitNewlines(line, colomnWidth):
         #time.sleep(2)
     return line
 
+def addSpacesInLine(line, colomnWidth):
+    index = 0    
+    while(len(line) < colomnWidth):
+        index = line.find(' ', index)
+        line = line[:index] + " " + line[index:]
+        index += 1
+    return line
+
 def addSpaces(lines, colomnWidth):
     splitLines = lines.splitlines()
     retLine = ""
     for line in splitLines:
-        retLine += line + "\n"
+        retLine += addSpacesInLine(line, colomnWidth) + "\n"
     return retLine
             
     
@@ -44,6 +52,11 @@ res = splitNewlines(text, 6)
 #print(res)
 assert res == "xx yy\nzz"
 
-text="xx yy\nzz"
+text="xx yy\n"
 res = addSpaces(text, 5)
-assert res == "xx yy\nzz\n"
+assert res == "xx yy\n"
+
+text="xx yy\n"
+res = addSpaces(text, 6)
+assert res == "xx  yy\n"
+
