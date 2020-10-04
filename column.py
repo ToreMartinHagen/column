@@ -11,7 +11,12 @@ def splitNewlines(line, colomnWidth):
     return line
 
 def addSpaces(lines, colomnWidth):
-    return lines
+    splitLines = lines.splitlines()
+    retLine = ""
+    for line in splitLines:
+        retLine += line + "\n"
+    return retLine
+            
     
 
 text="per ole"
@@ -41,4 +46,4 @@ assert res == "xx yy\nzz"
 
 text="xx yy\nzz"
 res = addSpaces(text, 5)
-assert res == "xx yy\nzz"
+assert res == "xx yy\nzz\n"
