@@ -1,12 +1,36 @@
 #!/usr/bin/python3
+#import time
 
 def splitNewlines(line, colomnWidth):
     index = colomnWidth + 1
-    index = line.rfind(' ', 0, index)
-    return line[:index] + "\n" + line[index+1:]
+    while index < len(line):
+        index = line.rfind(' ', 0, index)
+        line = line[:index] + "\n" + line[index+1:]
+        index += colomnWidth + 2
+        #time.sleep(2)
+    return line
 
 text="per ole"
 res = splitNewlines(text, 3)
 #print(res)
 assert res == "per\nole"
 
+text="xx yy zz"
+res = splitNewlines(text, 2)
+#print(res)
+assert res == "xx\nyy\nzz"
+
+text="xx yy zz"
+res = splitNewlines(text, 3)
+#print(res)
+assert res == "xx\nyy\nzz"
+
+text="xx yy zz"
+res = splitNewlines(text, 5)
+#print(res)
+assert res == "xx yy\nzz"
+
+text="xx yy zz"
+res = splitNewlines(text, 6)
+#print(res)
+assert res == "xx yy\nzz"
